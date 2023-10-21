@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+        function setRefreshInterval() {
+            const select = document.getElementById('refreshSelect');
+            const selectedValue = select.value;
+            
+            if (selectedValue) {
+                // Convert seconds to milliseconds for setTimeout
+                const refreshTime = selectedValue * 1000;
+                setTimeout(() => {
+                    location.reload();
+                }, refreshTime);
+            }
+        }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1> 
+    <p>Welcome <%= uname %></p>
+    <a href="/users/logout">Log Out</a>
+    <form>
+        <label>Select Update Interval:</label>
+        <select id="refreshSelect">
+            <option value="30">30 seconds</option>
+            <option value="60">1 minute</option>
+            <option value="180">3 minutes</option>
+            <option value="300">5 minutes</option>
+        </select>
+        <input type="submit" value="Set" onclick="setRefreshInterval()">
+    </form>
+    <table>
+      <%- product_cells%>
+    </table>
+    
+  </body>
+</html>

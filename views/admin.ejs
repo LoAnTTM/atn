@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <a href="/users/logout">Log Out</a>
+    <h1><%= title %></h1>
+    <p>Welcome <%= uname %></p>
+    <table>
+      <%- user_cells%>
+    </table>
+  </body>
+</html>
