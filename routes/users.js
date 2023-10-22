@@ -48,7 +48,6 @@ router.get('/logout',(req,res) => {
   res.redirect('/');
 });
 
-
 /* GET admin page */
 router.get('/admin', async function(req, res, next) {
   // check username in session to make sure that user logged in.
@@ -62,22 +61,15 @@ router.get('/admin', async function(req, res, next) {
     res.redirect('/users/login')
   }
 });
-// /* POST crud for admin page */
-// router.post('/admin_crud', async function(req, res, next) {
-//   let req_body = req.body;
-//   await admin_crud(req_body);
-//   res.redirect('/users/admin');
-// });
 
 /* GET director page */
 router.get('/director', async function(req, res, next) {
-  // check username in session to make sure that user logged in.
   let user_name = req.session.username;
+  let shop_type = req.query.shop_type;
   // let role = req.session.role;
   // let department_id = req.session.department_id;
-  let table_string = await table_director('productsToy');
+  let table_string = await table_director(shop_type);
   // let form_string = await select_form();
-  // console.log(table_string)
   if (user_name)
   {
     res.render('director', {title: "Director",
@@ -126,11 +118,9 @@ router.post('/crud', async function(req, res, next) {
   let department_id = req.session.department_id;
 
   if (btn === 'Update' || btn === 'Delete' || btn === 'Create') {
-    // Determine the table name based on your application logic.
-    // You can use a condition to switch between admin and product tables.
     let table_name;
     if (role == 'admin') {
-      table_name = 'users'; // Adjust the table name for admin.
+      table_name = 'users'; 
       await admin_crud(req_body, table_name);
     } else if (department_id == 2) {
       table_name = 'productsToy';
@@ -143,7 +133,6 @@ router.post('/crud', async function(req, res, next) {
       await product_crud(req_body, table_name);
     }
   }
-
   // Redirect back to the appropriate page after the operation
   if (role === 'admin') {
     res.redirect('/users/admin');
