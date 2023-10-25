@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+</head>
+<body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="/users/login">Please login</a>
-  </body>
+    <p>Welcome to <%= title %>, a leading toy retailer in Vietnam. 
+      Our scenario-based system enables efficient management and 
+      real-time data monitoring across our numerous outlets.</p>
+
+    <h2>Program Roles</h2>
+    <ul>
+        <li><strong>Admin:</strong> Manages user accounts and system settings.</li>
+        <li><strong>Director:</strong> Views available products across shops, and monitors sales data.</li>
+        <li><strong>Staff:</strong> Manages shop's products and keeps track of inventory.</li>
+    </ul>
+
+    <h2>How It Works</h2>
+    <p>Each shop operates its own database to record transactions and manage inventory. 
+      Monthly sales data is sent to the Director for analysis and reporting.
+       This system streamlines operations and provides real-time stock information to the board, 
+       facilitating informed decision-making.</p>
+
+    <a href="/users/login">Login</a> to access your dashboard.
+</body>
 </html>

@@ -6,9 +6,12 @@ async function table_director(shop_type) {
     const client = new Client(conn_string);
     await client.connect(); 
     // Query to DB and get the products table 
-const queryToys = `select "productsToy".*, "departments".name from "productsToy" left join "departments" on "departments".id ="productsToy".shop_id`;
-    const queryBooks = `select "productsBook".*, "departments".name from "productsBook" left join "departments" on "departments".id ="productsBook".shop_id`;
-    const queryClothes = `select "productsClothes".*, "departments".name from "productsClothes" left join "departments" on "departments".id ="productsClothes".shop_id`;
+const queryToys = `select "productsToy".id, "productsToy".name, "productsToy".price, "productsToy".amount, "departments".name from "productsToy" 
+    left join "departments" on "departments".id ="productsToy".shop_id`;
+const queryBooks = `select "productsBook".id, "productsBook".name, "productsBook".price, "productsBook".amount, "departments".name from "productsBook" 
+    left join "departments" on "departments".id ="productsBook".shop_id`;
+const queryClothes = `select "productsClothes".id, "productsClothes".name, "productsClothes".price, "productsClothes".amount, "departments".name from "productsClothes" 
+    left join "departments" on "departments".id ="productsClothes".shop_id`;
     const allShop = queryToys + ' union all ' + queryBooks + ' union all ' + queryClothes;
     console.log(shop_type);
     switch (shop_type) {
